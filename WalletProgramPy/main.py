@@ -1,4 +1,5 @@
 from action import Action
+from model import WalletModel
 
 if __name__ == "__main__":
     gestion_portefeuilles = Action()
