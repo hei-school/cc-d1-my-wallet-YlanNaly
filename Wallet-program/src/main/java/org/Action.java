@@ -10,7 +10,6 @@ public class Action implements Serializable {
     private static final long serialVersionUID = 1L;
     private Map<String, WalletModel> wallet;
     private static final String FILENAME = "wallet.ser";
-
     public Action() {
         wallet = new HashMap<>();
         chargeData();
@@ -41,20 +40,20 @@ public class Action implements Serializable {
         System.out.println("Portefeuille créé pour " + name);
     }
 
-    public void addSource(String name, double value) {
+    public void addSource(String name,String source, double value) {
         WalletModel portefeuille = wallet.get(name);
         if (portefeuille != null) {
-            portefeuille.addSource(name, value);
+            portefeuille.addSource(name, source, value);
             saveData();
         } else {
             System.out.println("Portefeuille introuvable pour " + name);
         }
     }
 
-    public void expenses(String name, double value) {
+    public void expenses(String name, String source, double value) {
         WalletModel portefeuille = wallet.get(name);
         if (portefeuille != null) {
-            portefeuille.addExpense(name,value);
+            portefeuille.addExpense(name,source,value);
         } else {
             System.out.println("Portefeuille introuvable pour " + name);
         }
@@ -67,6 +66,26 @@ public class Action implements Serializable {
             saveData();
             System.out.println("Portefeuille réinitialisé pour " + name);
         } else {
+            System.out.println("Portefeuille introuvable pour " + name);
+        }
+    }
+
+    public void showListExpenses(String name){
+        WalletModel portefeuille = wallet.get(name);
+        if (portefeuille != null) {
+            portefeuille.getListExpense(name);
+        }
+        else{
+            System.out.println("Portefeuille introuvable pour " + name);
+        }
+    }
+
+    public void showListSource(String name){
+        WalletModel portefeuille = wallet.get(name);
+        if (portefeuille != null) {
+            portefeuille.getListSource(name);
+        }
+        else{
             System.out.println("Portefeuille introuvable pour " + name);
         }
     }

@@ -14,10 +14,10 @@ public class Main {
             System.out.println("2. Ajouter un source à un portefeuille");
             System.out.println("3. Ajouter une dépense à un portefeuille");
             System.out.println("4. Afficher le portefeuille d'une personne");
-     /*     System.out.println("5. Afficher la liste des dépenses d'une personne");
-            System.out.println("6. Afficher la liste des revenues d'une personne");*/
+            System.out.println("5. Afficher la liste des dépenses d'une personne");
+            System.out.println("6. Afficher la liste des revenues d'une personne");
             System.out.println("7. Vider votre portefeuille");
-            System.out.println("8. Quitter");
+            System.out.println("8. Ranger votre portefeuille");
 
             System.out.print("Choix : ");
             int choix = scanner.nextInt();
@@ -33,17 +33,21 @@ public class Main {
                     System.out.print("Nom de la personne : ");
                     scanner.nextLine();
                     String nameActifPerson = scanner.nextLine();
+                    System.out.println("Nom du source de revenue : ");
+                    String nameSource = scanner.nextLine();
                     System.out.print("Montant : ");
                     double montant = scanner.nextDouble();
-                    gestionPortefeuilles.addSource(nameActifPerson, montant);
+                    gestionPortefeuilles.addSource(nameActifPerson, nameSource, montant);
                     break;
                 case 3:
                     System.out.print("Nom de la personne : ");
                     scanner.nextLine();
                     String name = scanner.nextLine();
+                    System.out.println("Nom du dépense : ");
+                    String namedeps = scanner.nextLine();
                     System.out.print("Dépense : ");
                     double deps = Double.parseDouble(scanner.nextLine());
-                    gestionPortefeuilles.expenses(name,deps);
+                    gestionPortefeuilles.expenses(name,namedeps,deps);
                     break;
                 case 4:
                     System.out.print("Nom de la personne : ");
@@ -51,13 +55,25 @@ public class Main {
                     String nameAffichage = scanner.nextLine();
                     gestionPortefeuilles.showWalletModel(nameAffichage);
                     break;
+                case 5:
+                    System.out.print("Nom de la personne : ");
+                    scanner.nextLine();
+                    name = scanner.nextLine();
+                    gestionPortefeuilles.showListExpenses(name);
+                    break;
+                case 6:
+                    System.out.print("Nom de la personne : ");
+                    scanner.nextLine();
+                    name = scanner.nextLine();
+                    gestionPortefeuilles.showListSource(name);
+                    break;
                 case 7:
                     System.out.print("Nom de la personne : ");
                     scanner.nextLine();
                     String reset = scanner.nextLine();
                     gestionPortefeuilles.resetWallet(reset);
                     break;
-                case 5:
+                case 8:
                     action = false;
                     break;
                 default:
