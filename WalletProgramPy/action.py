@@ -1,3 +1,8 @@
+import pickle
+
+from model import WalletModel
+
+
 class Action:
     def __init__(self):
         self.wallet = {}
